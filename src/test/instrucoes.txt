@@ -1,0 +1,56 @@
+Você encontrou o lindo livro 01 em estado novo que eu te falei, Carla?
+[
+    ('Você', 'PRON'), 
+    ('encontrou', 'VERB'), 
+    ('o', 'DET'), 
+    ('livro', 'NOUN'), 
+    ('que', 'PRON'), 
+    ('eu', 'PRON'), 
+    ('te', 'PRON'), 
+    ('falei', 'VERB'), 
+    (',', 'PUNCT'), 
+    ('Carla', 'PROPN'), 
+    ('?', 'PUNCT')
+] 
+
+===================================
+O primeiro uso de desobediência civil em massa ocorreu em setembro de 1906.
+[
+    ('O', 'DET'), 
+    ('primeiro', 'ADJ'), 
+    ('uso', 'NOUN'), 
+    ('de', 'ADP'), 
+    ('desobediência', 'NOUN'), 
+    ('civil', 'ADJ'), 
+    ('em', 'ADP'), 
+    ('massa', 'NOUN'), 
+    ('ocorreu', 'VERB'), 
+    ('em', 'ADP'), 
+    ('setembro', 'NOUN'), 
+    ('de', 'ADP'), 
+    ('1906', 'NUM'), 
+    ('.', 'PUNCT')
+]
+
+###################################
+[
+    PRON = pronome,
+    PROPN = nome pessoal
+    VERB = verbo,
+    DET = Artigo indefinido
+    NOUM = objeto
+    PUNCT = pontuação
+    NUM = numero
+    ADP = preposição
+    ADJ = adjetivo
+
+]
+###################################
+[
+    ('Gerar', 'PROPN'), 
+    ('relatorio', 'NOUN'), 
+    ('de', 'ADP'), 
+    ('vendas', 'NOUN'), 
+    ('de', 'ADP'), 
+    ('2020', 'NUM')
+]
