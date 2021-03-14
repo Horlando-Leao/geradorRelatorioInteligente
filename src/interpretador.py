@@ -23,18 +23,18 @@ class Interpretador:
 
         #setando indices para auxiliar na busca
         listaRelatorio = []
+        listaComandos = []
         listaLevenshtein = []
         #item[0] = nome do relatorio
         #item[1] = select para gerar o relatorio
-        for nomeRelatorio in relatorio.listaRelatorios.items():
-            listaRelatorio.append(nomeRelatorio[0])
-            listaLevenshtein.append(self.calcular_grau_de_similaridade_frases(nomeRelatorio[0]))
+        for item in relatorio.listaRelatorios.items():
+            listaRelatorio.append(item[0])
+            listaComandos.append(item[1])
+            listaLevenshtein.append(self.calcular_grau_de_similaridade_frases(item[0]))
         
         #procurar relatorio mais similiar
         value, indice = min((val, idx) for (idx, val) in enumerate(listaLevenshtein))
         print([value, indice])
-        return listaRelatorio[indice]
+        return listaComandos[indice]
 
 
-arg = Interpretador("Relatório de vendas 18")
-print(arg.procurar_relatorio_satisfatorio())
