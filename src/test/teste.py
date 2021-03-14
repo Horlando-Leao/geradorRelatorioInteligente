@@ -5,3 +5,5 @@ try:
     print(relatorios["Relatório de vendas 2020"])
 except KeyError:
     print("Relatório não indentificado")
+
+print(None)

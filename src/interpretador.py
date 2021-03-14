@@ -17,6 +17,7 @@ class Interpretador:
             nomeRelatorio))
         return resultadoComparacao
 
+
     
 arg = Interpretador("Relatório de vendas 2020")
 print(arg)
