@@ -23,29 +23,39 @@ class MysqlDataBase:
         )
         return mydb
 
-    def selectOne(self, sql):
-        mydb = self.conexaoMysql()
-        mycursor = mydb.cursor()
-        mycursor.execute(sql)
-        myresult = mycursor.fetchone()
-        print(myresult)
-    
-    def selectAll(self, sql:str) -> json:
-        """consulta sql com retorno json"""
+    def selectJson(self, sql:str) -> json:
+        """consulta sql com retorno em forma de json"""
         mydb = self.conexaoMysql()
         mycursor = mydb.cursor()
         mycursor.execute(sql)
 
-        row_headers=[x[0] for x in mycursor.description]
+        row_headers=[x[0] for x in mycursor.description]#
         myresult = mycursor.fetchall()
 
-        json_data=[]
-        for result in myresult:
-            json_data.append(dict(zip(row_headers,result)))
-        rs = json.dumps(json_data, ensure_ascii=False).encode('utf8')
+        json_data=[]#
+        for result in myresult:#
+            json_data.append(dict(zip(row_headers,result)))#
+        rs = json.dumps(json_data, ensure_ascii=False).encode('utf8')#
 
         return rs.decode()
 
+    def selectList(self, sql:str) -> list:
+        """consulta sql com retorno em forma de lista"""
+        mydb = self.conexaoMysql()
+        mycursor = mydb.cursor()
+        mycursor.execute(sql)
+        
+        myresult = mycursor.fetchall()
+
+        dicionario = {}
+        for values in myresult:
+            dicionario[values[0]] = values[1]
+
+        return dicionario
+
 
 novaConsulta = MysqlDataBase(database="livraria")
-print(novaConsulta.selectAll("SELECT * from livraria.autor"))
+#print(novaConsulta.selectAllJson("SELECT * from livraria.autor"))
+lista = (novaConsulta.selectList("SELECT * from livraria.autor"))
+
+print(lista)
