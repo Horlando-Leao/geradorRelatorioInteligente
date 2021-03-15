@@ -1,6 +1,6 @@
 import jellyfish as jf
 from Relatorio import Relatorio
-
+from app import app
 class Interpretador:
 
     def __init__(self, desejoUsuario):
@@ -34,7 +34,7 @@ class Interpretador:
         
         #procurar relatorio mais similiar
         value, indice = min((val, idx) for (idx, val) in enumerate(listaLevenshtein))
-        print("Pontuação: {0}, Desejo: {1}, Encontrado: {2}, Comando: {3}".format(
+        app.logger.debug("Pontuação: {0}, Desejo: {1}, Encontrado: {2}, Comando: {3}".format(
             value, 
             self.desejoUsuario, 
             listaRelatorio[indice],
