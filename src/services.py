@@ -17,6 +17,6 @@ class Services:
 
         return lista
 
-novoServico = Services().gerarRelatorio("vendas 2020")
-print(novoServico)
+#novoServico = Services().gerarRelatorio("vendas 2020")
+#print(novoServico)
 #gerarRelatorio("vendas 2020")
