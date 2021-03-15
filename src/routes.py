@@ -3,7 +3,7 @@ from app import app, request
 
 @app.route("/", methods=["GET"])
 def olaMundo():
-    return {"Olá":"Mundo"}
+    return "Testando Hello, World!"
 
 
 @app.route("/relatorio", methods=["GET"])
