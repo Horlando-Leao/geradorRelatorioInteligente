@@ -23,8 +23,9 @@ class MysqlDataBase:
         )
         return mydb
 
-    def selectJsonAntigo(self, sql:str) -> json:
-        """consulta sql com retorno em forma de json"""
+    # consulta sql com retorno em forma de json
+    """ def selectJsonAntigo(self, sql:str) -> json:
+        
         mydb = self.conexaoMysql()
         mycursor = mydb.cursor()
         mycursor.execute(sql)
@@ -37,22 +38,19 @@ class MysqlDataBase:
             json_data.append(dict(zip(row_headers,result)))#
         rs = json.dumps(json_data, ensure_ascii=False).encode('utf8')#
 
-        return rs.decode()
+        return rs.decode() """
 
-    def selectJson(self, sql:str) -> list:
+    def selectJsonVendas(self, sql:str) -> list:
         """consulta sql com retorno em forma de lista"""
         mydb = self.conexaoMysql()
         mycursor = mydb.cursor()
         mycursor.execute(sql)
-        
         myresult = mycursor.fetchall()
 
         jsonArray =[]
-        x=0
         for values in myresult:
             itemDicionario = {"valor":(values[0]), "ano":str(values[1]) }
             jsonArray.append(itemDicionario)
-            x = x + 1
 
         return json.dumps(jsonArray)
 
@@ -73,6 +71,6 @@ class MysqlDataBase:
 
 
 
-novaConsulta = MysqlDataBase(database="desafio_a10")
-lista = (novaConsulta.selectJson("SELECT valor, ano from vendas"))
-print(lista)
+""" novaConsulta = MysqlDataBase(database="desafio_a10")
+lista1 = novaConsulta.selectJsonVendas("SELECT valor, ano from vendas")
+print(lista1) """

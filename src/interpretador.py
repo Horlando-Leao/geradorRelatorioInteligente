@@ -34,7 +34,12 @@ class Interpretador:
         
         #procurar relatorio mais similiar
         value, indice = min((val, idx) for (idx, val) in enumerate(listaLevenshtein))
-        print([value, indice])
+        print("Pontuação: {0}, Desejo: {1}, Encontrado: {2}, Comando: {3}".format(
+            value, 
+            self.desejoUsuario, 
+            listaRelatorio[indice],
+            listaComandos[indice]))
+
         return listaComandos[indice]
 
 

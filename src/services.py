@@ -2,15 +2,21 @@ from Relatorio import Relatorio
 from Interpretador import Interpretador
 from MysqlDataBase import MysqlDataBase
 
+class Services:
 
-def gerarRelatorio(desejoUsuario="Relatorio"):
-    Inter = Interpretador(desejoUsuario)
-    novaConsulta = MysqlDataBase(database="desafio_a10")
+    def __init__(self):
+        pass
 
-    sql = (Inter.procurar_relatorio_satisfatorio())
-    lista = (novaConsulta.selectList(sql))
+    def gerarRelatorio(self, desejoUsuario="Relatorio"):
+        Inter = Interpretador(desejoUsuario)
+        novaConsulta = MysqlDataBase(database="desafio_a10")
 
-    print(sql)
-    print(lista)
+        sql = (Inter.procurar_relatorio_satisfatorio())
+        lista = (novaConsulta.selectJsonVendas(sql))
+        #print(sql)
 
-gerarRelatorio("Relatório 2020")
+        return lista
+
+novoServico = Services().gerarRelatorio("vendas 2020")
+print(novoServico)
+#gerarRelatorio("vendas 2020")
