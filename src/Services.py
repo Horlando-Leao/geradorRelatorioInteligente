@@ -12,7 +12,7 @@ class Services:
         novaConsulta = MysqlDataBase(database="desafio_a10")
 
         sql = Inter.procurar_relatorio_satisfatorio()
-        listaJson = novaConsulta.selectJsonVendas(sql)
+        listaJson = novaConsulta.selectJson(sql)
         #print(sql)
         #teste = MysqlDataBase(database="desafio_a10").selectJsonVendas(Interpretador(desejoUsuario).procurar_relatorio_satisfatorio())
 
