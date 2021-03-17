@@ -5,72 +5,59 @@ import json
 class MysqlDataBase:
 
     def __init__(self, host="localhost", user="root", password="root", database=None):
-        self._host=host
-        self._user=user
-        self._password=password
-        self._database=database
+        self.host=host
+        self.user=user
+        self.password=password
+        self.database=database
 
     def getDatabase(self):
-        return self._database
+        return self.database
     
     def conexaoMysql(self):
         mydb = mysql.connector.connect(
-            host=self._host,
-            user=self._user,
-            password=self._password,
-            database=self._database,
+            host=self.host,
+            user=self.user,
+            password=self.password,
+            database=self.database,
             charset='utf8'
         )
         return mydb
 
-    # consulta sql com retorno em forma de json
-    """ def selectJsonAntigo(self, sql:str) -> json:
-        
+    def executarSql(self, sql):
         mydb = self.conexaoMysql()
         mycursor = mydb.cursor()
         mycursor.execute(sql)
-
-        row_headers=[x[0] for x in mycursor.description]#
         myresult = mycursor.fetchall()
+        return [myresult, mycursor]
 
-        json_data=[]#
-        for result in myresult:#
-            json_data.append(dict(zip(row_headers,result)))#
-        rs = json.dumps(json_data, ensure_ascii=False).encode('utf8')#
-
-        return rs.decode() """
-
-    def selectJsonVendas(self, sql:str) -> list:
+    def selectList(self, comandoSQL:str) -> list:
         """consulta sql com retorno em forma de lista"""
-        mydb = self.conexaoMysql()
-        mycursor = mydb.cursor()
-        mycursor.execute(sql)
-        myresult = mycursor.fetchall()
-
-        jsonArray =[]
-        for values in myresult:
-            itemDicionario = {"valor":(values[0]), "ano":str(values[1]) }
-            jsonArray.append(itemDicionario)
-
-        return json.dumps(jsonArray)
-
-    def selectList(self, sql:str) -> list:
-        """consulta sql com retorno em forma de lista"""
-        mydb = self.conexaoMysql()
-        mycursor = mydb.cursor()
-        mycursor.execute(sql)
-        
-        myresult = mycursor.fetchall()
+        myresult = self.executarSql(comandoSQL)
 
         dicionario = {}
-        for values in myresult:
+        for values in myresult[0]:
             dicionario[values[0]] = str(values[1])
 
         return dicionario
 
+    def selectJson(self, comandoSQL:str) -> json:
+        """consulta sql com retorno em forma de json"""
+        execSql = self.executarSql(comandoSQL)
+        row_headers=[x[0] for x in execSql[1].description]#
+        myresult = execSql[0]
+        
+        json_data=[]
+        for result in myresult:
+            json_data.append(dict(zip(row_headers,result)))
+        resultado = json.dumps(json_data, indent = 4, sort_keys = True, default = str)
+
+        return resultado
 
 
 
-""" novaConsulta = MysqlDataBase(database="desafio_a10")
-lista1 = novaConsulta.selectJsonVendas("SELECT valor, ano from vendas")
-print(lista1) """
+
+novaConsulta = MysqlDataBase(database="desafio_a10")
+#lista1 = novaConsulta.selectJsonVendas("SELECT valor, ano from vendas")
+#lista2 = novaConsulta.getValorAnoJson(comandoSQL="SELECT valor, ano from vendas")
+lista3 = novaConsulta.selectJson(comandoSQL="SELECT idVendas, valor, ano from vendas")
+print(lista3)
