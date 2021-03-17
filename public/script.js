@@ -10,9 +10,9 @@ function buscarRelatorio(desejoUsuario){
       };
       
       fetch(`http://127.0.0.1:5000/relatorio?desejo=${desejoUsuario}`, requestOptions)
-      //fetch(`http://127.0.0.1:5000/relatorio?desejo=${}`, { mode: 'no-cors'})
+      //fetch(`http://127.0.0.1:5000/`, requestOptions)
         .then(response => console.log(response))
-        .then(result => console.log(result))
+        .then(result => console.log(result.data))
         .catch(error => console.log('error', error));
 }
 

@@ -11,11 +11,12 @@ class Services:
         Inter = Interpretador(desejoUsuario)
         novaConsulta = MysqlDataBase(database="desafio_a10")
 
-        sql = (Inter.procurar_relatorio_satisfatorio())
-        lista = (novaConsulta.selectJsonVendas(sql))
+        sql = Inter.procurar_relatorio_satisfatorio()
+        listaJson = novaConsulta.selectJsonVendas(sql)
         #print(sql)
+        #teste = MysqlDataBase(database="desafio_a10").selectJsonVendas(Interpretador(desejoUsuario).procurar_relatorio_satisfatorio())
 
-        return lista
+        return listaJson
 
 #novoServico = Services().gerarRelatorio("vendas 2020")
 #print(novoServico)
