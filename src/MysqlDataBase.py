@@ -10,8 +10,12 @@ class MysqlDataBase:
         self.password=password
         self.database=database
 
-    def getDatabase(self):
-        return self.database
+    def __str__(self):
+        return "Objeto da classe MysqlDataBase com atributos: '{0}','{1}','{2}'".format(
+            self.database, self.host, self.user)
+
+    def setDatabase(self, baseDados):
+        self.database = baseDados
     
     def conexaoMysql(self):
         mydb = mysql.connector.connect(
@@ -24,6 +28,7 @@ class MysqlDataBase:
         return mydb
 
     def executarSql(self, sql):
+        """Executa o sql e retorna um array que contém na posição 0: resultado e 1:cursor"""
         mydb = self.conexaoMysql()
         mycursor = mydb.cursor()
         mycursor.execute(sql)
@@ -54,9 +59,5 @@ class MysqlDataBase:
         return resultado
 
 
-
-
-""" novaConsulta = MysqlDataBase(database="desafio_a10")
-lista = novaConsulta.selectList(comandoSQL="SELECT nome, comando from relatorios") """
-#lista = novaConsulta.selectJson(comandoSQL="SELECT idVendas, valor, ano from vendas")
-#print(lista)
+novaConsulta = MysqlDataBase(database="desafio_a10")
+print(novaConsulta)
