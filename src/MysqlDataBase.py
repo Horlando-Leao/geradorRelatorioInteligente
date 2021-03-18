@@ -49,15 +49,14 @@ class MysqlDataBase:
         json_data=[]
         for result in myresult:
             json_data.append(dict(zip(row_headers,result)))
-        resultado = json.dumps(json_data, indent = 4, sort_keys = True, default = str)
+        resultado = json.dumps(json_data, indent = 2, sort_keys = True, default = str)
 
         return resultado
 
 
 
 
-novaConsulta = MysqlDataBase(database="desafio_a10")
-#lista1 = novaConsulta.selectJsonVendas("SELECT valor, ano from vendas")
-#lista2 = novaConsulta.getValorAnoJson(comandoSQL="SELECT valor, ano from vendas")
-lista3 = novaConsulta.selectJson(comandoSQL="SELECT idVendas, valor, ano from vendas")
-print(lista3)
+""" novaConsulta = MysqlDataBase(database="desafio_a10")
+lista = novaConsulta.selectList(comandoSQL="SELECT nome, comando from relatorios") """
+#lista = novaConsulta.selectJson(comandoSQL="SELECT idVendas, valor, ano from vendas")
+#print(lista)

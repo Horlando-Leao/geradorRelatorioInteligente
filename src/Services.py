@@ -1,4 +1,3 @@
-from Relatorio import Relatorio
 from Interpretador import Interpretador
 from MysqlDataBase import MysqlDataBase
 
@@ -13,9 +12,7 @@ class Services:
 
         sql = Inter.procurar_relatorio_satisfatorio()
         listaJson = novaConsulta.selectJson(sql)
-        #print(sql)
-        #teste = MysqlDataBase(database="desafio_a10").selectJsonVendas(Interpretador(desejoUsuario).procurar_relatorio_satisfatorio())
-
+    
         return listaJson
 
 #novoServico = Services().gerarRelatorio("vendas 2020")

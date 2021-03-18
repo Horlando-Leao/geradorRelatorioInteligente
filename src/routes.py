@@ -4,9 +4,9 @@ from app import app, request, jsonify, make_response
 @app.route("/", methods=["GET"])
 def olaMundo():
     #minhaResp = make_response({"respoata":"Testando Hello World!"})
-    minhaResp = ({"resposta":"Testando Hello World!"})
     #minhaResp.headers["warning"] = "warning"
     #minhaResp.status_code = 200
+    minhaResp = ({"resposta":"Testando Hello World!"})
     return jsonify(minhaResp)
 
 

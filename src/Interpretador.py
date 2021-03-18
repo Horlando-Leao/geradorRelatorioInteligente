@@ -19,15 +19,15 @@ class Interpretador:
         return resultadoComparacao
 
     def procurar_relatorio_satisfatorio(self):
-        relatorio = Relatorio() 
-
+        relatorio = Relatorio().getListaComandoRelatorio()
+        
         #setando indices para auxiliar na busca
         listaRelatorio = []
         listaComandos = []
         listaLevenshtein = []
         #item[0] = nome do relatorio
         #item[1] = select para gerar o relatorio
-        for item in relatorio.listaRelatorios.items():
+        for item in relatorio.items():
             listaRelatorio.append(item[0])
             listaComandos.append(item[1])
             listaLevenshtein.append(self.calcular_grau_de_similaridade_frases(item[0]))
