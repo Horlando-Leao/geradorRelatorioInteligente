@@ -1,6 +1,10 @@
 import jellyfish as jf
+
 from Relatorio import Relatorio
+from IdentificarParametros import IdentificarParametros
+
 from app import app
+
 class Interpretador:
 
     def __init__(self, desejoUsuario):
@@ -10,7 +14,7 @@ class Interpretador:
         return "Objeto '{0}' da classe Interpretador".format(self.desejoUsuario)
 
     
-    def calcular_grau_de_similaridade_frases(self, nomeRelatorio):
+    def calcular_grau_de_similaridade_frases(self, nomeRelatorio=""):
         """calcula o grau de simililaridade entre duas frases, o desejo do 
         usuario e nome do relatorio disponivel"""
         resultadoComparacao = float(jf.levenshtein_distance(
@@ -41,5 +45,6 @@ class Interpretador:
             listaComandos[indice]))
 
         return listaComandos[indice]
+
 
 

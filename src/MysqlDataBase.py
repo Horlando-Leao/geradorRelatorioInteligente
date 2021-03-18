@@ -59,5 +59,5 @@ class MysqlDataBase:
         return resultado
 
 
-novaConsulta = MysqlDataBase(database="desafio_a10")
-print(novaConsulta)
+""" novaConsulta = MysqlDataBase(database="desafio_a10")
+print(novaConsulta) """
