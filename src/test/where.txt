@@ -1,0 +1,1 @@
+where ano  >  date('2018-12-31') and ano < date('2020-01-01')

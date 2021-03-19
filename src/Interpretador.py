@@ -23,6 +23,7 @@ class Interpretador:
         return resultadoComparacao
 
     def procurar_relatorio_satisfatorio(self):
+        """Retorno o comando sql que o usuário deseja"""
         relatorio = Relatorio().getListaComandoRelatorio()
         
         #setando indices para auxiliar na busca
@@ -46,5 +47,10 @@ class Interpretador:
 
         return listaComandos[indice]
 
+    def indetificar_parametos_ano(self):
+        """Retorna uma array de string que contém datas"""
+        idPar = IdentificarParametros(self.desejoUsuario).indetificarParametosAno()
+        return idPar
+        
 
 
