@@ -41,16 +41,23 @@ class Util():
         if len(dates) > 0:
             listDates = []
             for date in dates:
-                listDates.append( str(date[0]) +"-"+ str(date[1]) +"-"+ str(date[2]) )
+                listDates.append( str(date[2]) +"-"+ str(date[1]) +"-"+ str(date[0]) )
             return listDates
 
-    def procurarSeparadores(self, string=""):
+    def procurarStrings(self, boleano = False, string="", matchess = []):
         a_string = string
-        matchess = ["-", ".", "/"]
 
         matches = []
         for x in matchess:
             if x in a_string and x not in matches:
                 matches.append(x)
-    
-        return matches
+
+        if(boleano == True and matches):
+            return True
+        elif(boleano == True and matches == []):
+            return False
+        else:
+            return matches
+
+#utilidade = Util().procurarStrings(string="Relátorio de vendas por ano", matchess=["por ano"], boleano=True)
+#print(utilidade)

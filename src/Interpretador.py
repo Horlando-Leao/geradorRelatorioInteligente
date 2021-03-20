@@ -1,14 +1,14 @@
 import jellyfish as jf
+from unidecode import unidecode
 
 from Relatorio import Relatorio
 from IdentificarParametros import IdentificarParametros
-
-from app import app
+#from app import app #ao importar app a classe para de funcionar
 
 class Interpretador:
 
     def __init__(self, desejoUsuario):
-        self.desejoUsuario = desejoUsuario
+        self.desejoUsuario = unidecode(desejoUsuario.upper())
 
     def __str__(self):
         return "Objeto '{0}' da classe Interpretador".format(self.desejoUsuario)
@@ -39,18 +39,20 @@ class Interpretador:
         
         #procurar relatorio mais similiar
         value, indice = min((val, idx) for (idx, val) in enumerate(listaLevenshtein))
-        app.logger.debug("Pontuação: {0}, Desejo: {1}, Encontrado: {2}, Comando: {3}".format(
-            value, 
-            self.desejoUsuario, 
-            listaRelatorio[indice],
-            listaComandos[indice]))
+        #app.logger.debug("Pontuação: {0}, Desejo: {1}, Encontrado: {2}, Comando: {3}".format(value, self.desejoUsuario, listaRelatorio[indice], listaComandos[indice]))
 
         return listaComandos[indice]
 
     def indetificar_parametos_ano(self):
-        """Retorna uma array de string que contém datas"""
-        idPar = IdentificarParametros(self.desejoUsuario).indetificarParametosAno()
+        desejUsr = self.desejoUsuario
+        idPar = IdentificarParametros(desejUsr).indetificarParametosAno()
         return idPar
+
+
+#novaInter = Interpretador(desejoUsuario="Relátorio de vendas por valor em 20")
+#print(novaInter.desejoUsuario)
+#print(novaInter.procurar_relatorio_satisfatorio())
+#print(novaInter.indetificar_parametos_ano())
         
 
 

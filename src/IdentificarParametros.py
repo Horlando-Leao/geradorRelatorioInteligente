@@ -5,11 +5,12 @@ from Util import Util
 
 nlp = spacy.load('pt_core_news_sm')
 
-class IdentificarParametros():
+class IdentificarParametros:
     def __init__(self, desejoUsuario):
         self.desejoUsuario = desejoUsuario
 
     def indetificarParametosAno(self):
+        """Retorna uma array de string que contém datas"""
         desejoUsuarioTratado = nlp(unidecode(self.desejoUsuario.upper()))
         #print(desejoUsuarioTratado)
 
@@ -34,7 +35,7 @@ class IdentificarParametros():
             #print(datas)
             expresaoData = Util.detectarDataExpressaoRegular(str(datas))
             listaDatas.append(expresaoData[0])
-        return(listaDatas)
+        return listaDatas
 
         
 
