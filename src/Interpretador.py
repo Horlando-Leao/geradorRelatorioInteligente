@@ -12,7 +12,6 @@ class Interpretador:
 
     def __str__(self):
         return "Objeto '{0}' da classe Interpretador".format(self.desejoUsuario)
-
     
     def calcular_grau_de_similaridade_frases(self, nomeRelatorio=""):
         """calcula o grau de simililaridade entre duas frases, o desejo do 

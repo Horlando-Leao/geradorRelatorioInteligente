@@ -13,6 +13,12 @@ def olaMundo():
 @app.route("/relatorio", methods=["GET"])
 def relatorio():
     intencao_usuario = request.args.get("intencao_usuario")
-    resultado = Services().gerarRelatorio(desejoUsuario=intencao_usuario)
-
+    resultado = ""
+    if(isinstance(intencao_usuario, str) and len(intencao_usuario) > 1):
+        resultado = Services().gerarRelatorio(desejoUsuario=intencao_usuario)
+        resultado = resultado
+    else:
+        rs = {"response":"Falta paramêtros", "parametros":["intencao_usuario"] }
+        resultado = make_response(rs)
+        resultado.status_code = 422
     return (resultado)

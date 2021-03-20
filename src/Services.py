@@ -36,6 +36,7 @@ class Services:
                 a2, m2, d2 = [int(x) for x in parametroAno[1].split('-')] 
                 data1 = date(a1, m1, d1)
                 data2 = date(a2, m2, d2)
+
                 if data1 == data2: 
                     print("AS datas são iguais") 
                     sql = sql + " = '{0}';".format(str(data1))
@@ -47,19 +48,18 @@ class Services:
                 else: 
                     print("a segunda data é maior")
                     sql = sql + " between '{0}' and '{1}' ;".format(str(data1), str(data2))
+
             elif(len(parametroAno) == 1):#um data
-                print("Tem 1 datas")
+                print("Tem 1 data")
                 sql = sql + " = '{0}';".format(str(parametroAno[0]))
 
-            
-            #sql = sql + " >'{0}'".format(str(parametroAno[0]))
+            else:
+                print("Parametos com mais de 2 datas não implementado")
+                sql = sql
+
         else:
             sql = sql
             print("Não tem parâmetro ", temParametros)
-        
-        """agora só preciso alterar o serviço para que alem de indetificar o nome do relatorio
-        que o usuário tem intenção de obter também setar parametros de restrinção na clasura where do sql
-        que está previamente gravado em uma tabela no banco"""
 
         print(sql)
         listaJson = consulta.selectJson(sql)
