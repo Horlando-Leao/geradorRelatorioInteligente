@@ -66,8 +66,17 @@ class Services:
     
         return listaJson
 
+    def retornarTodosNomesRelatorios(self):
+        consulta = MysqlDataBase(database="desafio_a10")
+        rs = consulta.selectJson("select nome from relatorios order by nome asc")
+        return rs
+
 """ novoServico = Services()
 print(novoServico.gerarRelatorio("Relatorio de vendas por ano 2017 a 2020 "))
 print(novoServico.gerarRelatorio("Relatorio de vendas por ano 2020 a 2020 "))
 print(novoServico.gerarRelatorio("Relatorio de vendas por ano 2020 "))
 print(novoServico.gerarRelatorio("Relatorio de vendas")) """
+
+
+""" novoServico = Services()
+print(novoServico.retornarTodosNomesRelatorios()) """

@@ -22,3 +22,13 @@ def relatorio():
         resultado = make_response(rs)
         resultado.status_code = 422
     return (resultado)
+
+@app.route("/relatorio/nomes", methods=["GET"])
+def relatorioNomes():
+    todoNomesRelatorio = Services().retornarTodosNomesRelatorios()
+    rs = make_response(todoNomesRelatorio)
+    rs.headers.add('Access-Control-Allow-Origin', '*')
+    rs.headers["dataType"] = "jsonp"
+
+
+    return rs
