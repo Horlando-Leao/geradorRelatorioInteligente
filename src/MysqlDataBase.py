@@ -54,8 +54,8 @@ class MysqlDataBase:
         json_data=[]
         for result in myresult:
             json_data.append(dict(zip(row_headers,result)))
-        resultado = json.dumps(json_data, indent = 2, sort_keys = True, default = str)
-
+        #resultado = json.dumps(json_data, indent = 2, sort_keys = True, default = str) #retorno json
+        resultado = json_data
         return resultado
 
 
