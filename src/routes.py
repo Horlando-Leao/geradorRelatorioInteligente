@@ -11,6 +11,10 @@ def olaMundo():
     return minhaResp
 
 
+
+
+
+
 @app.route("/relatorio", methods=["GET"])
 def relatorio():
     intencao_usuario = request.args.get("intencao_usuario")
