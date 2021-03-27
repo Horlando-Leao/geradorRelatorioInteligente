@@ -2,7 +2,7 @@
 
 ## Iniciativa de criar um backend de relatório inteligente.
 
-## O proposito:
+## O propósito:
 O usuário fornecer uma intenção de dados, exemplo "Relatório de vendas por ano de 2020". 
 onde [vendas] = é um desejo, 
 [por ano] = é um parâmetro, 
